@@ -13,9 +13,21 @@
 
 <body>
 
-	<img style="display: inline; height: 1.6em;" src="favicon.svg" alt="logo" />
+	<img style="display: inline; height: 1.6em;" src="favicon.png" alt="logo" />
 	<h1 style="display: inline; height: 2em; margin-left: 0.3em; letter-spacing: 3px; color: rgb(200, 113, 55);">SIGH</h1>
 
+	<p>
+		<?php
+		if (!file_exists("capture_preview.jpg")) {
+			shell_exec("gphoto2 --capture-preview");
+			echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
+		} else {
+			unlink("capture_preview.jpg");
+			shell_exec("gphoto2 --capture-preview");
+			echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
+		}
+		?>
+	</p>
 	<form style="margin-top: 1em;" action='index.php' method='POST'>
 		<select name='parameter'>
 			<option value=''>Select command</option>
@@ -29,7 +41,7 @@
 		<input style="margin-bottom: 1.5em;" type="text" name="fn">
 		<p>ISO:</p>
 		<input style="margin-bottom: 1.5em;" type="text" name="iso">
-		<p>gPhoto2 command <em style="color:lightgray">(example: --list-config)</em>:</p>
+		<p>gPhoto2 command: <em style="color:lightgray">(example: --list-config)</em></p>
 		<input style="margin-bottom: 1.5em;" type="text" name="cmd">
 		<input type='submit' value='OK' />
 	</form>
