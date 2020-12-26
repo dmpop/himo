@@ -13,8 +13,9 @@
 
 <body>
 
-	<img style="display: inline; height: 1.6em;" src="favicon.png" alt="logo" />
-	<h1 style="display: inline; height: 2em; margin-left: 0.3em; letter-spacing: 3px; color: rgb(200, 113, 55);">SIGH</h1>
+	<img style="display: inline; height: 2em;" src="favicon.png" alt="logo" />
+	<h1 style="display: inline; margin-left: 0.3em; letter-spacing: 3px; color: rgb(200, 113, 55);">SIGH</h1>
+	<hr style="margin-bottom: 2em;">
 
 	<p>
 		<?php
@@ -28,6 +29,7 @@
 		}
 		?>
 	</p>
+	<button style="background-color: #cce6ff; margin-bottom: 2em;" onClick="history.go(0)" role="button">Refresh</button>
 	<form style="margin-top: 1em;" action='index.php' method='POST'>
 		<select name='parameter'>
 			<option value=''>Select command</option>
@@ -43,7 +45,7 @@
 		<input style="margin-bottom: 1.5em;" type="text" name="iso">
 		<p>gPhoto2 command: <em style="color:lightgray">(example: --list-config)</em></p>
 		<input style="margin-bottom: 1.5em;" type="text" name="cmd">
-		<input type='submit' value='OK' />
+		<input style="background-color: #ccffcc;" type='submit' value='OK' />
 	</form>
 
 	<?php
@@ -60,7 +62,7 @@
 
 	if (!empty($_POST["iso"])) {
 		echo '<pre>';
-		passthru("gphoto2 --set-config iso=" . $_POST["iso"]);
+		passthru('gphoto2 --set-config iso=' . $_POST["iso"]);
 		echo '</pre>';
 	}
 
