@@ -1,6 +1,6 @@
 # Sigh
 
-Sigh provides a simple web interface to control any supported camera via gPhoto2.
+Sigh provides a simple web interface to control any supported camera via gPhoto2. Sigh stands for **S**imples **I**nterface for **g**P**h**oto2. Sigh runs on any Linux machine.
 
 ## Dependencies
 
