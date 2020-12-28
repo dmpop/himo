@@ -1,6 +1,15 @@
 # Sigh
 
-Sigh provides a simple web interface to control any supported camera via gPhoto2. Sigh stands for **S**imples **I**nterface for **g**P**h**oto2. Sigh runs on any Linux machine.
+Sigh provides a simple web interface to control any supported camera via gPhoto2. Sigh stands for **S**imple **I**nterface for **g**P**h**oto2. Sigh runs on any Linux machine.
+
+## Rationale
+
+Most modern cameras can be controlled using dedicated apps, so it may seem that Sigh tries to solve a non-existing problem in a somewhat more convoluted way. However, Sigh has a number of important advantages.
+
+- No proprietary software. Sigh is an open-source software based on PHP and gPhoto2.
+- Sigh runs in any browser, so you are not limited to iOS or Android devices.
+- The tool is not limited to a specific camera model. If your camera is supported by gPhoto2, it will work with Sigh.
+- Sigh is deliberately made simple, so you can easily customize, extend, and improve it.
 
 ## Dependencies
 
