@@ -12,25 +12,28 @@
 </head>
 
 <body>
-
+	<script>
+		if (window.history.replaceState) {
+			window.history.replaceState(null, null, window.location.href);
+		}
+	</script>
 	<img style="display: inline; height: 1.5em;" src="favicon.png" alt="logo" />
 	<h1 style="display: inline; margin-left: 0.3em; letter-spacing: 3px; color: rgb(200, 113, 55);">SIGH</h1>
 	<hr style="margin-bottom: 2em;">
 
-		<?php
-		echo "<p>";
-		$CAMERA = shell_exec("gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//'");
-		if (!empty($CAMERA)) {
-			unlink("capture_preview.jpg");
-			shell_exec("gphoto2 --capture-preview");
-			echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
-			echo '<button style="background-color: #cce6ff; margin-bottom: 2em; margin-top: 2em; font-family: Barlow-Medium; letter-spacing: 0.1em;" onClick="history.go(0)" role="button">REFRESH</button>';
-			echo "</p>";
-		} else {
-			echo "<p style='margin-bottom: 2em;'><em>Camera is not detected.</em></p>";
-		}
-		?>
-
+	<?php
+	echo "<p>";
+	$CAMERA = shell_exec("gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//'");
+	if (!empty($CAMERA)) {
+		unlink("capture_preview.jpg");
+		shell_exec("gphoto2 --capture-preview");
+		echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
+		echo '<button style="background-color: #cce6ff; margin-bottom: 2em; margin-top: 2em; font-family: Barlow-Medium; letter-spacing: 0.1em;" onClick="history.go(0)" role="button">REFRESH</button>';
+		echo "</p>";
+	} else {
+		echo "<p style='margin-bottom: 2em;'><em>Camera is not detected.</em></p>";
+	}
+	?>
 	<form style="margin-top: 1em;" action='index.php' method='POST'>
 		<select name='parameter'>
 			<option value=''>Select command</option>
@@ -80,7 +83,6 @@
 		echo '</pre>';
 	}
 	?>
-
 </body>
 
 </html>
