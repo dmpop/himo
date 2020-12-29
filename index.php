@@ -86,6 +86,8 @@
 		echo '</pre>';
 	}
 	?>
+	<hr style="margin-top: 2em;">
+	<p>This is <a href="https://github.com/dmpop/sifaca">Sifaca</a></p>
 </body>
 
 </html>
