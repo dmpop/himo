@@ -27,23 +27,23 @@ sudo apt install -y git-core gphoto2 php-cli
 # Remove obsolete packages
 sudo apt autoremove -y
 
-# Clone and configure Sigh
+# Clone and configure Sifaca
 cd
-git clone https://github.com/dmpop/sigh.git
+git clone https://github.com/dmpop/sifaca.git
 
-# Create sigh systemd service unit
-sudo sh -c "echo '[Unit]' > /etc/systemd/system/sigh.service"
-sudo sh -c "echo 'Description=Sigh' >> /etc/systemd/system/sigh.service"
-sudo sh -c "echo '[Service]' >> /etc/systemd/system/sigh.service"
-sudo sh -c "echo 'Restart=always' >> /etc/systemd/system/sigh.service"
-sudo sh -c "echo 'ExecStart=/usr/bin/php -S 0.0.0.0:8000 -t /home/"$USER"/sigh' >> /etc/systemd/system/sigh.service"
-sudo sh -c "echo 'ExecStop=/usr/bin/kill -HUP \$MAINPID' >> /etc/systemd/system/sigh.service"
-sudo sh -c "echo '[Install]' >> /etc/systemd/system/sigh.service"
-sudo sh -c "echo 'WantedBy=multi-user.target' >> /etc/systemd/system/sigh.service"
-sudo systemctl enable sigh.service
-sudo systemctl start sigh.service
+# Create sifaca systemd service unit
+sudo sh -c "echo '[Unit]' > /etc/systemd/system/sifaca.service"
+sudo sh -c "echo 'Description=Sifaca' >> /etc/systemd/system/sifaca.service"
+sudo sh -c "echo '[Service]' >> /etc/systemd/system/sifaca.service"
+sudo sh -c "echo 'Restart=always' >> /etc/systemd/system/sifaca.service"
+sudo sh -c "echo 'ExecStart=/usr/bin/php -S 0.0.0.0:8000 -t /home/"$USER"/sifaca' >> /etc/systemd/system/sifaca.service"
+sudo sh -c "echo 'ExecStop=/usr/bin/kill -HUP \$MAINPID' >> /etc/systemd/system/sifaca.service"
+sudo sh -c "echo '[Install]' >> /etc/systemd/system/sifaca.service"
+sudo sh -c "echo 'WantedBy=multi-user.target' >> /etc/systemd/system/sifaca.service"
+sudo systemctl enable sifaca.service
+sudo systemctl start sifaca.service
 
-dialog --clear --title "Setup finished" --backtitle "Sigh" --infobox "\nAll done! The system will reboot now." 5 45
+dialog --clear --title "Setup finished" --backtitle "Sifaca" --infobox "\nAll done! The system will reboot now." 5 45
 sleep 5
 clear
 sudo reboot

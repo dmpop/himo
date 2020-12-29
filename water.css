@@ -98,8 +98,9 @@ select {
 input, select, button, textarea {
   color: #000000;
   background-color: #efefef;
-  font-family: inherit;
+  font-family: Barlow-Medium;
   font-size: inherit;
+  letter-spacing: 0.1em;
   margin-right: 6px;
   margin-bottom: 6px;
   padding: 10px;
@@ -242,14 +243,8 @@ tbody tr:nth-child(even) {
 /*# sourceMappingURL=light.css.map */
 
 em {
-  font-family: "Barlow-LightItalic", sans-serif;
+  font-family: "Barlow-MediumItalic", sans-serif;
   color: rgb(200, 113, 55);
-}
-
-@font-face {
-  font-family: 'Barlow-Light';
-  font-weight: 300;
-  src: url('../woff/Barlow-Light.woff2') format('woff');
 }
 
 @font-face {
@@ -265,8 +260,8 @@ em {
 }
 
 @font-face {
-  font-family: 'Barlow-LightItalic';
+  font-family: 'Barlow-MediumItalic';
   font-weight: 300;
   font-style: italic;
-  src: url('../woff/Barlow-LightItalic.woff2') format('woff');
+  src: url('../woff/Barlow-MediumItalic.woff2') format('woff');
 }
