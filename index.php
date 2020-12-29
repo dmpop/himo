@@ -22,12 +22,18 @@
 	<hr style="margin-bottom: 2em;">
 
 	<?php
-	echo "<p>";
+	echo '<p>';
+	echo "IP address: <strong>";
+	passthru('hostname -I');
+	echo '</strong></p>';
+	echo "<p style='margin-top: 2em;'>";
 	$CAMERA = shell_exec("gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//'");
 	if (!empty($CAMERA)) {
 		unlink("capture_preview.jpg");
 		shell_exec("gphoto2 --capture-preview");
-		echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
+		if (file_exists("capture_preview.jpg")) {
+			echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
+		}
 		echo "</p>";
 	} else {
 		echo '<img style="display: inline; height: 1.5em; margin-right: 0.5em; vertical-align: middle;" src="img/alert.svg" alt="alert" />';
@@ -40,17 +46,20 @@
 	<form style="margin-top: 2em;" action='index.php' method='POST'>
 		<select name='parameter'>
 			<option value=''>Select command</option>
-			<option value='--capture-image-and-download --filename photos/%Y%m%d-%H%M%S-%03n.%C'>Capture and download</option>
+			<option value='--capture-image-and-download --keep --filename photos/%Y%m%d-%H%M%S-%03n.%C'>Capture and download</option>
+			<option value='--get-all-files --skip-existing'>Download all files</option>
+			<option disabled>-----</option>
 			<option value='--abilities'>Show camera's abilities</option>
 			<option value='--list-config'>List configurable parameters</option>
+			<option disabled>-----</option>
+			<option value='--help'>gPhoto2 help</option>
 			<option value='--version'>Version</option>
-			<option value='--help'>Help</option>
 		</select>
 		<p>Aperture:</p>
 		<input style="margin-bottom: 1.5em;" type="text" name="fn">
 		<p>ISO:</p>
 		<input style="margin-bottom: 1.5em;" type="text" name="iso">
-		<p>gPhoto2 command: <em style="color:lightgray">(example: --list-config)</em></p>
+		<p>gPhoto2 parameters: <em style="color:lightgray">(example: --list-config)</em></p>
 		<input style="margin-bottom: 1.5em;" type="text" name="cmd">
 		<input style="background-color: #ccffcc;" type='submit' value='OK' />
 	</form>
@@ -81,8 +90,8 @@
 
 	if (isset($_POST["parameter"])) {
 		$command = 'gphoto2 ' . $_POST['parameter'];
-		echo '<pre>';
-		passthru("$command");
+		echo '<hr style="margin-top: 2em;"><pre>';
+		passthru($command);
 		echo '</pre>';
 	}
 	?>
