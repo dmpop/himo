@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Himo</title>
+	<title>ひも</title>
 	<link rel="shortcut icon" href="img/favicon.png" />
 	<link rel="stylesheet" href="water.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,10 +30,6 @@
 	echo '</strong></p>';
 	echo "<p style='margin-top: 2em;'>";
 
-	if (file_exists("capture_preview.jpg")) {
-		echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
-	}
-
 	$CAMERA = shell_exec("gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//'");
 	if (empty($CAMERA)) {
 		echo '<img style="display: inline; height: 1.5em; margin-right: 0.5em; vertical-align: middle;" src="img/alert.svg" alt="alert" />';
@@ -45,6 +41,10 @@
 		shell_exec("gphoto2 --capture-preview");
 	}
 	echo "</p>";
+
+	if (file_exists("capture_preview.jpg")) {
+		echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
+	}
 	?>
 
 	<form style="margin-top: 2em;" action=' ' method='POST'>
@@ -70,10 +70,6 @@
 			<option value='--help'>gPhoto2 help</option>
 			<option value='--version'>Version</option>
 		</select>
-		<p>Aperture:</p>
-		<input style="margin-bottom: 1.5em;" type="text" name="fn">
-		<p>ISO:</p>
-		<input style="margin-bottom: 1.5em;" type="text" name="iso">
 		<p>gPhoto2 parameters: <em style="color:lightgray">(example: --list-config)</em></p>
 		<input style="margin-bottom: 1.5em;" type="text" name="cmd">
 		<input style="background-color: #ccffcc;" type='submit' value='OK' />
@@ -83,18 +79,6 @@
 
 	if (!file_exists("photos")) {
 		mkdir("photos", 0777, true);
-	}
-
-	if (!empty($_POST["fn"])) {
-		echo '<pre>';
-		passthru("gphoto2 --set-config f-number=" . $_POST["fn"]);
-		echo '</pre>';
-	}
-
-	if (!empty($_POST["iso"])) {
-		echo '<pre>';
-		passthru('gphoto2 --set-config iso=' . $_POST["iso"]);
-		echo '</pre>';
 	}
 
 	if (!empty($_POST["cmd"])) {
