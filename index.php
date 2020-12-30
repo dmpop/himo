@@ -5,15 +5,22 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Sifaca</title>
+	<title>Himo</title>
 	<link rel="shortcut icon" href="img/favicon.png" />
 	<link rel="stylesheet" href="water.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
+
+	<script>
+		if (window.history.replaceState) {
+			window.history.replaceState(null, null, window.location.href);
+		}
+	</script>
+
 	<img style="display: inline; height: 1.5em;" src="img/favicon.png" alt="logo" />
-	<h1 style="display: inline; margin-left: 0.3em; letter-spacing: 3px; color: rgb(200, 113, 55);">SIFACA</h1>
+	<h1 style="display: inline; margin-left: 0.3em; letter-spacing: 3px; color: rgb(200, 113, 55);">HIMO</h1>
 	<hr style="margin-bottom: 2em;">
 
 	<?php
@@ -22,39 +29,41 @@
 	passthru('hostname -I');
 	echo '</strong></p>';
 	echo "<p style='margin-top: 2em;'>";
+
+	if (file_exists("capture_preview.jpg")) {
+		echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
+	}
+
 	$CAMERA = shell_exec("gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//'");
 	if (empty($CAMERA)) {
 		echo '<img style="display: inline; height: 1.5em; margin-right: 0.5em; vertical-align: middle;" src="img/alert.svg" alt="alert" />';
 		echo 'Camera is not connected.';
 	}
+
 	if (!empty($_POST["refresh"])) {
 		unlink("capture_preview.jpg");
 		shell_exec("gphoto2 --capture-preview");
-		if (file_exists("capture_preview.jpg")) {
-			echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
-		}
 	}
 	echo "</p>";
 	?>
 
 	<form style="margin-top: 2em;" action=' ' method='POST'>
-		<input style="background-color: #cce6ff; display: inline;" type='submit' name='refresh' value='Refresh' />
-		<input style="background-color: #f87474; display: inline;" type='submit' name='capture' value='Capture' />
-		<input style="display: inline;" type='submit' name='download' value='Download' />
+		<input style="display: inline;" type='submit' name='refresh' value='Refresh' />
+		<input style="background-color: #cce6ff;  display: inline;" type='submit' name='capture' value='Capture' />
 	</form>
 
 	<?php
-	if (!empty($_POST["download"])) {
-		shell_exec("gphoto2 --get-all-files --skip-existing --filename photos/%Y%m%d-%H%M%S-%03n.%C");
-	}
 	if (!empty($_POST["capture"])) {
-		shell_exec("gphoto2 --capture-image-and-download --keep --filename photos/%Y%m%d-%H%M%S-%03n.%C");
+		echo "<pre>";
+		passthru("gphoto2 --capture-image-and-download --keep --filename photos/%Y%m%d-%H%M%S-%03n.%C");
+		echo "</pre>";
 	}
 	?>
 
 	<form style="margin-top: 2em;" action='index.php' method='POST'>
 		<select name='parameter'>
 			<option value=''>Select command</option>
+			<option value='--get-all-files --skip-existing --filename photos/%Y%m%d-%H%M%S-%03n.%C'>Transfer from camera</option>
 			<option value='--abilities'>Show camera's abilities</option>
 			<option value='--list-config'>List configurable parameters</option>
 			<option disabled>-----</option>
@@ -102,7 +111,7 @@
 	}
 	?>
 	<hr style="margin-top: 2em;">
-	<p>This is <a href="https://github.com/dmpop/sifaca">Sifaca</a></p>
+	<p>This is <a href="https://github.com/dmpop/himo">Himo</a></p>
 </body>
 
 </html>
