@@ -19,8 +19,8 @@
 		}
 	</script>
 
-	<img style="display: inline; height: 1.5em;" src="img/favicon.png" alt="logo" />
-	<h1 style="display: inline; margin-left: 0.3em; letter-spacing: 3px; color: rgb(200, 113, 55);">HIMO</h1>
+	<img style="display: inline; height: 2em; vertical-align: middle;" src="img/favicon.png" alt="logo" />
+	<h1 style="display: inline; margin-left: 0.19em; letter-spacing: 3px; color: rgb(200, 113, 55); vertical-align: middle;">HIMO</h1>
 	<hr style="margin-bottom: 2em;">
 
 	<?php
