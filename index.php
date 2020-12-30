@@ -63,12 +63,16 @@
 	<form style="margin-top: 2em;" action='index.php' method='POST'>
 		<select name='parameter'>
 			<option value=''>Select command</option>
-			<option value='--get-all-files --skip-existing --filename photos/%Y%m%d-%H%M%S-%03n.%C'>Transfer from camera</option>
-			<option value='--abilities'>Show camera's abilities</option>
-			<option value='--list-config'>List configurable parameters</option>
-			<option disabled>-----</option>
-			<option value='--help'>gPhoto2 help</option>
-			<option value='--version'>Version</option>
+			<?php
+			if (file_exists("commands.csv")) {
+				$handle = fopen("commands.csv", "r");
+				while (($row = fgetcsv($handle, 0, ";")) !== FALSE) {
+					echo '<option value="' . $row[1] . '">' . $row[0] . "</option>";
+				}
+			} else {
+				echo '<option disabled>commands.csv not found</option>';
+			}
+			?>
 		</select>
 		<p>gPhoto2 parameters: <em style="color:lightgray">(example: --list-config)</em></p>
 		<input style="margin-bottom: 1.5em;" type="text" name="cmd">
