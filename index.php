@@ -77,9 +77,10 @@
 			}
 			?>
 		</select>
+		<input style="margin-top: 1.5em;" type="button" onclick="location.href='edit.php';" value="Edit" />
 		<p>gPhoto2 parameters: <em style="color:lightgray">(example: --list-config)</em></p>
 		<input style="margin-bottom: 1.5em;" type="text" name="cmd">
-		<input style="background-color: #ccffcc;" type='submit' value='OK' />
+		<input style="background-color: #ccffcc; display: inline;" type='submit' value='OK' />
 	</form>
 
 	<?php
