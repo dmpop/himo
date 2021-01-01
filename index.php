@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Author: Dmitri Popov, dmpop@linux.com
+<!-- Author: Dmitri Popov, dmpop@linux.com, tokyoma.de
 	 License: GPLv3 https://www.gnu.org/licenses/gpl-3.0.txt -->
 
 <head>
@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+	<!-- Suppress form re-submit prompt on refresh -->
 	<script>
 		if (window.history.replaceState) {
 			window.history.replaceState(null, null, window.location.href);
@@ -24,24 +24,27 @@
 	<hr style="margin-bottom: 2em;">
 
 	<?php
+	// Display the IP address of the machine running Himo
 	echo '<p>';
 	echo "IP address: <strong>";
 	passthru('hostname -I');
 	echo '</strong></p>';
 	echo "<p style='margin-top: 2em;'>";
 
+	// Check is the camera is connected
 	$CAMERA = shell_exec("gphoto2 --auto-detect | grep usb | cut -b 36-42 | sed 's/,/\//'");
+	// If the camera is not detected, show a warning message
 	if (empty($CAMERA)) {
 		echo '<img style="display: inline; height: 1.5em; margin-right: 0.5em; vertical-align: middle;" src="img/alert.svg" alt="alert" />';
 		echo 'Camera is not connected.';
 	}
-
+	// Iff the camera is detected, capture a preview image
 	if (!empty($_POST["refresh"])) {
 		unlink("capture_preview.jpg");
 		shell_exec("gphoto2 --capture-preview");
 	}
 	echo "</p>";
-
+	// Show the captured preview image
 	if (file_exists("capture_preview.jpg")) {
 		echo '<img style="border-radius: 9px;" src="capture_preview.jpg">';
 	}

@@ -19,7 +19,7 @@
 
 # Update sources and upgrade packages
 sudo apt update
-sudo apt upgrade -y
+sudo apt full-upgrade -y
 
 # Install the required packages
 sudo apt install -y git-core gphoto2 php-cli
