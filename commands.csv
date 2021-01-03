@@ -1,4 +1,4 @@
-Transfer from camera; --get-all-files --skip-existing --filename photos/%Y%m%d-%H%M%S-%03n.%C
+Get all files; --get-all-files --skip-existing --filename photos/%Y%m%d-%H%M%S-%03n.%C
 List configurable parameters; --list-config
 Show camera's abilities; --abilities
 gPhoto2 help; --help

@@ -50,9 +50,19 @@
 	}
 	?>
 
+	<?php
+	// Read the first row of the commands.csv file
+	if (file_exists("commands.csv")) {
+		$handle = fopen("commands.csv", "r");
+		$custom = fgetcsv($handle, 1000, ";");
+	}
+	?>
+
 	<form style="margin-top: 2em;" action=' ' method='POST'>
 		<input style="display: inline;" type='submit' name='refresh' value='Refresh' />
 		<input style="background-color: #cce6ff;  display: inline;" type='submit' name='capture' value='Capture' />
+		<!-- Custom button that uses the first value of the $custom array as the button label -->
+		<input style="background-color: #ccffcc; display: inline;" type='submit' name='custom' value='<?php echo $custom[0] ?>' />
 	</form>
 
 	<?php
@@ -63,13 +73,23 @@
 	}
 	?>
 
+	<?php
+	// If the custom button pressed, pass the second value of the $custom array as a gPhoto2 command.
+	if (!empty($_POST["custom"])) {
+		echo "<pre>";
+		passthru('gphoto2 ' . $custom[1]);
+		echo "</pre>";
+	}
+	?>
+
 	<form style="margin-top: 2em;" action='index.php' method='POST'>
 		<select name='parameter'>
 			<option value=''>Select command</option>
 			<?php
 			if (file_exists("commands.csv")) {
 				$handle = fopen("commands.csv", "r");
-				while (($row = fgetcsv($handle, 0, ";")) !== FALSE) {
+				fgetcsv($handle);
+				while (($row = fgetcsv($handle, 1000, ";")) !== FALSE) {
 					echo '<option value="' . $row[1] . '">' . $row[0] . "</option>";
 				}
 			} else {
