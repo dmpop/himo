@@ -22,7 +22,7 @@ sudo apt update
 sudo apt full-upgrade -y
 
 # Install the required packages
-sudo apt install -y git-core gphoto2 php-cli
+sudo apt install -y git gphoto2 php-cli
 
 # Remove obsolete packages
 sudo apt autoremove -y
@@ -43,7 +43,9 @@ sudo sh -c "echo 'WantedBy=multi-user.target' >> /etc/systemd/system/himo.servic
 sudo systemctl enable himo.service
 sudo systemctl start himo.service
 
-dialog --clear --title "Setup finished" --backtitle "Himo" --infobox "\nAll done! The system will reboot now." 5 45
+echo "-------------------------------------"
+echo "All done! The system will reboot now."
+echo "-------------------------------------"
 sleep 5
 clear
 sudo reboot
