@@ -10,45 +10,18 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-button, input, textarea {
-  transition: background-color 0.1s linear, border-color 0.1s linear, color 0.1s linear, box-shadow 0.1s linear, transform 0.1s ease;
-}
-
 h1 {
   font-family: "Barlow-Medium", sans-serif;
   font-size: 1.9em;
   margin-top: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin-bottom: 12px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong {
+h1, h2, h3, h4, h5, h6, strong {
   color: #000000;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-b,
-strong,
-th {
-  font-weight: 600;
 }
 
 blockquote {
@@ -58,7 +31,7 @@ blockquote {
   font-style: italic;
 }
 
-blockquote > footer {
+blockquote>footer {
   margin-top: 10px;
   font-style: normal;
 }
@@ -71,27 +44,11 @@ address {
   font-style: normal;
 }
 
-a[href^='mailto']::before {
-  content: '📧 ';
-}
-
-a[href^='tel']::before {
-  content: '📞 ';
-}
-
-a[href^='sms']::before {
-  content: '💬 ';
-}
-
-button,
-input[type='submit'],
-input[type='button'],
-input[type='checkbox'] {
+button, input[type='submit'], input[type='button'], input[type='checkbox'] {
   cursor: pointer;
 }
 
-input:not([type='checkbox']):not([type='radio']),
-select {
+input:not([type='checkbox']):not([type='radio']), select {
   display: block;
 }
 
@@ -109,8 +66,7 @@ input, select, button, textarea {
   outline: none;
 }
 
-input:not([type='checkbox']):not([type='radio']),
-select, button, textarea {
+input:not([type='checkbox']):not([type='radio']), select, button, textarea {
   -webkit-appearance: none;
 }
 
@@ -126,31 +82,20 @@ button, input[type='submit'], input[type='button'] {
   padding-left: 30px;
 }
 
-button:hover,
-input[type='submit']:hover,
-input[type='button']:hover {
-  background: #dddddd;
-}
-
-input:focus,
-select:focus,
-button:focus,
-textarea:focus {
+button:hover, input[type='submit']:hover, input[type='button']:hover {
+  /* background: #dddddd; */
   box-shadow: 0 0 0 2px #0096bfab;
 }
 
-input[type='checkbox']:active,
-input[type='radio']:active,
-input[type='submit']:active,
-input[type='button']:active,
-button:active {
+input:focus, select:focus, button:focus, textarea:focus {
+  box-shadow: 0 0 0 2px #0096bfab;
+}
+
+input[type='checkbox']:active, input[type='radio']:active, input[type='submit']:active, input[type='button']:active, button:active {
   transform: translateY(2px);
 }
 
-input:disabled,
-select:disabled,
-button:disabled,
-textarea:disabled {
+input:disabled, select:disabled, button:disabled, textarea:disabled {
   cursor: not-allowed;
   opacity: .5;
 }
@@ -187,7 +132,7 @@ code, kbd {
   border-radius: 6px;
 }
 
-pre > code {
+pre>code {
   padding: 10px;
   display: block;
   overflow-x: auto;
@@ -250,12 +195,14 @@ em {
 @font-face {
   font-family: 'Barlow-Regular';
   font-weight: 400;
+  font-style: normal;
   src: url('../woff/Barlow-Regular.woff2') format('woff');
 }
 
 @font-face {
   font-family: 'Barlow-Medium';
   font-weight: 500;
+  font-style: bold;
   src: url('../woff/Barlow-Medium.woff2') format('woff');
 }
 

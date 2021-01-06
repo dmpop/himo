@@ -25,9 +25,9 @@ Most modern cameras can be controlled using dedicated apps, so it may seem that 
 3. Switch in the terminal to the _himo_ directory and run the `php -S 0.0.0.0:8000` command.
 4. Point the browser to the _127.0.0.1:8000_ address.
 
-The [Linux Photography](https://gumroad.com/l/linux-photography) book provides detailed information  on creating Hald CLUT presets for use with Lilut. Get your copy at [Google Play Store](https://play.google.com/store/books/details/Dmitri_Popov_Linux_Photography?id=cO70CwAAQBAJ) or [Gumroad](https://gumroad.com/l/linux-photography).
+The [Linux Photography](https://gumroad.com/l/linux-photography) book provides detailed information  on installing and using Himo. Get your copy at [Google Play Store](https://play.google.com/store/books/details/Dmitri_Popov_Linux_Photography?id=cO70CwAAQBAJ) or [Gumroad](https://gumroad.com/l/linux-photography).
 
-<img src="https://i.imgur.com/wBgcfSk.jpg" title="Linux Photography book" width="200"/>
+<img src="https://i.imgur.com/qP9Z9mQ.jpg" title="Linux Photography book" width="200"/>
 
 ## Problems?
 
@@ -39,11 +39,11 @@ If you've found a bug or have a suggestion for improvement, open an issue in the
 
 To add a new feature or fix issues yourself, follow the following steps.
 
-1. Fork the project's repository
-2. Create a feature branch using the `git checkout -b new-feature` command
-3. Add your new feature or fix bugs and run the `git commit -am 'Add a new feature'` command to commit changes
-4. Push changes using the `git push origin new-feature` command
-5. Submit a pull request
+1. Fork the project's repository.
+2. Create a feature branch using the `git checkout -b new-feature` command.
+3. Add your new feature or fix bugs and run the `git commit -am 'Add a new feature'` command to commit changes.
+4. Push changes using the `git push origin new-feature` command.
+5. Submit a pull request.
 
 ## Author
 
