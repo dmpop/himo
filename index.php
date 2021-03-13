@@ -50,13 +50,14 @@
 		}
 		?>
 
-		<form style="margin-top: 2em;" action=' ' method='POST'>
+		<form style="margin-top: 2em;" action=" " method="POST">
 			<button type="submit" style="display: inline;" name="refresh">Refresh</button>
-			<button type="submit" style="background-color: #cce6ff;  display: inline;" name="capture">Capture</button>
+			<button type="submit" style="display: inline; background-color: #cce6ff;" name="capture">Capture</button>
 			<!-- Custom button that uses the first value of the $custom array as the button label -->
 			<button type="submit" style="display: inline;" name="custom"><?php echo $custom[0] ?></button>
+			<button type='submit' style="display: inline; background-color: #ffccb3;" name="poweroff">Power off</button>
 		</form>
-
+		<hr style="margin-top: 2em;">
 		<?php
 		if (!empty($_POST["capture"])) {
 			echo "<pre>";
@@ -74,8 +75,8 @@
 		}
 		?>
 
-		<form style="margin-top: 2em;" action='index.php' method='POST'>
-			<select name='parameter'>
+		<form style="margin-top: 1.5em;" action='index.php' method='POST'>
+			<select name="parameter">
 				<option value=''>Select command</option>
 				<?php
 				if (file_exists("commands.csv")) {
@@ -91,9 +92,9 @@
 			</select>
 			<p>Optional gPhoto2 parameters: <em style="color:lightgray">(example: --list-config)</em></p>
 			<input type="text" name="cmd">
-			<button style="background-color: #ccffcc;" type='submit'>OK</button>
+			<button style="background-color: #ccffcc;" type="submit">OK</button>
 		</form>
-		<button type='submit' style="margin-top: 1.5em; display: inline;" type="button" onclick="location.href='edit.php';">Edit commands</button>
+		<button style="margin-top: 1.5em; display: inline;" type="button" onclick="location.href='edit.php';">Edit commands</button>
 
 		<?php
 
@@ -112,6 +113,9 @@
 			$command = 'gphoto2 ' . $_POST['parameter'];
 			passthru("$command");
 			echo '</pre>';
+		}
+		if (isset($_POST["poweroff"])) {
+			shell_exec('sudo poweroff > /dev/null 2>&1 & echo $!');
 		}
 		?>
 		<hr style="margin-top: 2em;">
